@@ -8,16 +8,16 @@ def delN(s):
     return s
 
 def parse(f):
-    url = 'https://omgtu.ru/general_information/faculties/' # передаем необходимы URL адрес
-    page = requests.get(url) # отправляем запрос методом Get на данный адрес и получаем ответ в переменную
-    print(page.status_code) # смотрим ответ
-    soup = BeautifulSoup(page.text, "html.parser") # передаем страницу в bs4
+    url = 'https://omgtu.ru/general_information/faculties/' 
+    page = requests.get(url) 
+    print(page.status_code) 
+    soup = BeautifulSoup(page.text, "html.parser") 
 
-    block = soup.findAll('div', id ="pagecontent") # находим  контейнер с нужным id
+    block = soup.findAll('div', id ="pagecontent")
     description = ''
-    for data in block: # проходим циклом по содержимому контейнера
-        if data.find('a'): # находим тег
-            description = data.text # записываем в переменную содержание тега
+    for data in block
+        if data.find('a'): 
+            description = data.text 
     
     description = delN(description)
     
@@ -29,4 +29,4 @@ def parse(f):
     
     result = delN(result)
 
-    print(result,file = f)  #,file = f
+    print(result,file = f)
